@@ -22,14 +22,19 @@ class ImageNet extends StatelessWidget {
       height: height,
       imageUrl: url,
       fit: fit ?? BoxFit.cover,
+      progressIndicatorBuilder: (context, url, downloadProgress) =>
+          CircularProgressIndicator(
+        value: downloadProgress.progress,
+      ),
       errorWidget: (
         BuildContext context,
         String url,
         dynamic error,
-      ) =>errorWidget??
+      ) =>
+          errorWidget ??
           Image.network(
-        'https://fratellidiamanti.com/ar/wp-content/themes/fratelli/img/notfound.png',
-      ),
+            'https://fratellidiamanti.com/ar/wp-content/themes/fratelli/img/notfound.png',
+          ),
     );
   }
 }

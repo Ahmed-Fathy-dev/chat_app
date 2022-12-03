@@ -3,8 +3,10 @@ part of '../pages/user_chats_page.dart';
 class _ChatItem extends StatelessWidget {
   const _ChatItem({
     required this.onTap,
+    required this.userChat,
   });
   final void Function() onTap;
+  final UserChat userChat;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -13,9 +15,9 @@ class _ChatItem extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            _AvatarWidget(),
+            _AvatarWidget(userChat.receiverImg!),
             const SizedBox(width: 12),
-            _RoomDetailsWidget(),
+            _RoomDetailsWidget(userChat),
           ],
         ),
       ),
@@ -24,13 +26,13 @@ class _ChatItem extends StatelessWidget {
 }
 
 class _AvatarWidget extends StatelessWidget {
-  const _AvatarWidget();
-
+  const _AvatarWidget(this.image);
+  final String image;
   @override
   Widget build(BuildContext context) {
-    return const ClipOval(
+    return ClipOval(
       child: ImageNet(
-        '',
+        image,
         height: 60,
         width: 60,
       ),
@@ -39,7 +41,8 @@ class _AvatarWidget extends StatelessWidget {
 }
 
 class _RoomDetailsWidget extends StatelessWidget {
-  const _RoomDetailsWidget();
+  const _RoomDetailsWidget(this.userChat);
+  final UserChat userChat;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +51,9 @@ class _RoomDetailsWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Someone Name',
+            userChat.receiverName.checkString(
+              'Fake Name',
+            ),
             style: context.txtTheme.titleMedium?.copyWith(
               fontSize: 14,
               color: context.colorSchemes.primary,
@@ -56,7 +61,9 @@ class _RoomDetailsWidget extends StatelessWidget {
             ),
           ),
           Text(
-            '@someoneusername',
+            userChat.receiverUsername.checkString(
+              '@FakeUsername',
+            ),
             style: const TextStyle(
               fontSize: 12,
               color: Color(0xFF262A33),
@@ -68,7 +75,9 @@ class _RoomDetailsWidget extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  'This is just random message, writing',
+                  userChat.msgTxt.checkString(
+                    'Fake Message',
+                  ),
                   style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xFF262A33),

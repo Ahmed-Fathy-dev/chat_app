@@ -5,7 +5,6 @@ import '../core/Routers/router.dart';
 import '../core/Theme/app_theming.dart';
 // import '../injection/injection_container.dart';
 
-
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
   // final ApiClient apiClient;

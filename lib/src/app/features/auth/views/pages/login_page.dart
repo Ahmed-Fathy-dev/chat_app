@@ -1,6 +1,7 @@
-
-
 import 'package:flutter/material.dart';
+
+import '../../../../../core/enum/enums.dart';
+import '../../../../components/shimmer_loading.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -10,6 +11,10 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('login'),
+      ),
+      body: ShimmerLoading(
+        enabled: true,
+        type: PageType.withDivider,
       ),
     );
   }
