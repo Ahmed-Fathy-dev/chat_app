@@ -79,24 +79,26 @@ class _RoomDetailsWidget extends StatelessWidget {
                     'Fake Message',
                   ),
                   style: const TextStyle(
-                    fontSize: 12,
-                    color: Color(0xFF262A33),
-                    fontWeight: FontWeight.w400,
-                  ),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF686C73)),
                 ),
               ),
-              ClipOval(
-                child: Container(
-                  width: 16,
-                  height: 16,
-                  alignment: Alignment.center,
-                  color: context.colorSchemes.primary,
-                  child: const Text(
-                    '2',
-                    style: TextStyle(color: Colors.white, fontSize: 10),
-                  ),
-                ),
-              ),
+              userChat.unreadMsg == 0
+                  ? const SizedBox.shrink()
+                  : ClipOval(
+                      child: Container(
+                        width: 16,
+                        height: 16,
+                        alignment: Alignment.center,
+                        color: context.colorSchemes.primary,
+                        child: Text(
+                          '${userChat.unreadMsg}',
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 10),
+                        ),
+                      ),
+                    ),
             ],
           )
         ],

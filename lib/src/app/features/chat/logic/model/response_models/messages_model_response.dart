@@ -52,8 +52,7 @@ class ChatM extends Equatable {
   @JsonKey(name: 'reciever_verified_status')
   final int? recieverVerifiedStatus;
 
-  factory ChatM.fromJson(Map<String, dynamic> json) =>
-      _$ChatMFromJson(json);
+  factory ChatM.fromJson(Map<String, dynamic> json) => _$ChatMFromJson(json);
 
   @override
   List<Object?> get props => [

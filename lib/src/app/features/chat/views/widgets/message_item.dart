@@ -24,7 +24,7 @@ class _MessageItem extends StatelessWidget {
   }
 }
 
-class _AvatarWidget extends _MessageItem {
+class _AvatarWidget extends StatelessWidget {
   const _AvatarWidget();
 
   @override
@@ -39,7 +39,7 @@ class _AvatarWidget extends _MessageItem {
   }
 }
 
-class _MessageDetailsWidget extends _MessageItem {
+class _MessageDetailsWidget extends StatelessWidget {
   const _MessageDetailsWidget();
 
   Color boxColor(BuildContext ctx) {

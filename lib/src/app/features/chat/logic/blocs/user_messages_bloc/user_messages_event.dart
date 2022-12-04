@@ -1,6 +1,24 @@
-// part of 'user_messages_bloc.dart';
+part of 'user_messages_bloc.dart';
 
-// @freezed
-// class UserMessagesEvent with _$UserMessagesEvent {
-//   const factory UserMessagesEvent.started() = _Started;
-// }
+abstract class UserMessagesEvent extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class GetUserMessagesEvent extends UserMessagesEvent {
+  final int receiverId;
+
+  GetUserMessagesEvent(this.receiverId);
+
+  @override
+  List<Object?> get props => [receiverId];
+}
+
+class UserMsgsPaginationEvent extends UserMessagesEvent {
+  final int receiverId;
+
+  UserMsgsPaginationEvent(this.receiverId);
+
+  @override
+  List<Object?> get props => [receiverId];
+}

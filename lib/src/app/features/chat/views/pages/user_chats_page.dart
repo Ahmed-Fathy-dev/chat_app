@@ -1,6 +1,11 @@
+import 'dart:async';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:zido/src/app/components/shimmer_loading.dart';
 import 'package:zido/src/app/components/switcher_widget.dart';
 import 'package:zido/src/core/Routers/routes.dart';
@@ -17,8 +22,10 @@ import '../../../../components/custom_appbar.dart';
 import '../../../../components/image_net.dart';
 import '../../logic/blocs/user_chats_bloc/user_chats_bloc.dart';
 import '../../logic/model/response_models/chats_model_response.dart';
+import 'chat_room.dart';
 
 part '../widgets/chat_item.dart';
+part '../widgets/chats_list.w.dart';
 
 class UserChatsPage extends StatelessWidget {
   const UserChatsPage({super.key});
@@ -58,42 +65,24 @@ class UserChatsPage extends StatelessWidget {
   }
 }
 
-class _UserChatsBody extends StatelessWidget {
+class _UserChatsBody extends HookWidget {
   const _UserChatsBody();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserChatsBloc, UserChatsState>(
-      builder: (context, state) {
+    return BlocSelector<UserChatsBloc, UserChatsState, ResponseStatus>(
+      selector: (state) {
+        return state.status;
+      },
+      builder: (context, status) {
         return WrapService(
-          status: state.status,
+          status: status,
           loading: ShimmerLoading(
-            enabled: state.status == const ResponseStatus.loading(),
+            enabled: status == const ResponseStatus.loading(),
             type: PageType.withDivider,
           ),
-          child: AnimationLimiter(
-            child: ListView.separated(
-              itemBuilder: (context, index) {
-                return AnimationConfiguration.staggeredList(
-                  position: index,
-                  duration: const Duration(milliseconds: 500),
-                  child: SlideAnimation(
-                    verticalOffset: 50.0,
-                    child: FadeInAnimation(
-                      child: _ChatItem(
-                        onTap: () => context.pushName(
-                          RouteName.chatRoomPage,
-                        ),
-                        userChat: state.chats[index],
-                      ),
-                    ),
-                  ),
-                );
-              },
-              separatorBuilder: (context, index) => const Divider(),
-              itemCount: state.chats.length,
-              // itemCount: 6,
-            ),
+          child: const AnimationLimiter(
+            child: _ChatsListWidget(),
           ),
         );
       },

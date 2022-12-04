@@ -1,6 +1,6 @@
 part of '../pages/chat_room.dart';
 
-class _ChatMsgsSection extends _ChatRoomBody {
+class _ChatMsgsSection extends StatelessWidget {
   const _ChatMsgsSection();
 
   @override
