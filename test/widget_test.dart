@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:zido/main.dart';
 import 'package:zido/src/root/app_root.dart';
 
 void main() {

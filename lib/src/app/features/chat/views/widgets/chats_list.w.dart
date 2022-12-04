@@ -40,11 +40,17 @@ class _ChatsListWidget extends HookWidget {
                       verticalOffset: 50.0,
                       child: FadeInAnimation(
                         child: _ChatItem(
-                          onTap: () => context.push(
-                            ChatRoomPage(
-                              receiverId: state.chats[index].receiverId,
-                            ),
-                          ),
+                          onTap: () {
+                            context.read<UserMessagesBloc>().add(
+                                  GetUserMessagesEvent(
+                                      state.chats[index].receiverId),
+                                );
+                            context.push(
+                              ChatRoomPage(
+                                receiverId: state.chats[index].receiverId,
+                              ),
+                            );
+                          },
                           userChat: state.chats[index],
                         ),
                       ),

@@ -10,9 +10,9 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('login'),
+        title: const Text('login'),
       ),
-      body: ShimmerLoading(
+      body: const ShimmerLoading(
         enabled: true,
         type: PageType.withDivider,
       ),

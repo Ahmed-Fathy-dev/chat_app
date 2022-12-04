@@ -7,7 +7,6 @@ import '../../../../../../core/network_service/exception_dio_message.dart';
 import '../../../../../../core/network_service/response_status.dart';
 import '../../../../../../core/utils/logger_util.dart';
 import '../../model/request_models/messages_model_request.dart';
-import '../../model/response_models/chats_model_response.dart';
 import '../../model/response_models/messages_model_response.dart';
 
 part 'user_messages_event.dart';

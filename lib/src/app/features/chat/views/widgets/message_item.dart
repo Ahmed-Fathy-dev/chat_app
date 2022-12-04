@@ -1,22 +1,22 @@
 part of '../pages/chat_room.dart';
 
 class _MessageItem extends StatelessWidget {
-  const _MessageItem();
+  const _MessageItem(this.msgs);
+  final UserMessages msgs;
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      //TODO:check user for set direction
-      textDirection: TextDirection.rtl,
+      textDirection: msgs.userId.checkMsgDir(),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
-            _AvatarWidget(),
+            _AvatarWidget(msgs.image),
             const SizedBox(
               width: 12,
             ),
-            _MessageDetailsWidget(),
+            _MessageDetailsWidget(msgs),
           ],
         ),
       ),
@@ -25,8 +25,8 @@ class _MessageItem extends StatelessWidget {
 }
 
 class _AvatarWidget extends StatelessWidget {
-  const _AvatarWidget();
-
+  const _AvatarWidget(this.img);
+  final String img;
   @override
   Widget build(BuildContext context) {
     return const ClipOval(
@@ -40,17 +40,8 @@ class _AvatarWidget extends StatelessWidget {
 }
 
 class _MessageDetailsWidget extends StatelessWidget {
-  const _MessageDetailsWidget();
-
-  Color boxColor(BuildContext ctx) {
-    //TODO:check user for set boxColor
-    return ctx.colorSchemes.primaryContainer;
-  }
-
-  Color textColor(BuildContext ctx) {
-    //TODO:check user for set textColor
-    return ctx.colorSchemes.primary;
-  }
+  const _MessageDetailsWidget(this.msgs);
+  final UserMessages msgs;
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +54,7 @@ class _MessageDetailsWidget extends StatelessWidget {
             vertical: 6,
           ),
           decoration: BoxDecoration(
-            color: boxColor(context),
+            color: msgs.userId.boxColor(context),
             borderRadius: BorderRadius.circular(4),
           ),
           child: Column(
@@ -72,10 +63,10 @@ class _MessageDetailsWidget extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'ahmed salem',
+                    msgs.name,
                     style: TextStyle(
                       fontSize: 12,
-                      color: textColor(context),
+                      color: msgs.userId.textColor(context),
                     ),
                   ),
                   const SizedBox(
@@ -96,20 +87,19 @@ class _MessageDetailsWidget extends StatelessWidget {
                 ],
               ),
               Text(
-                'It’s in a very good condition, no scratches at all👌 ',
-                style: TextStyle(
+                msgs.txt,
+                style: const TextStyle(
                   fontSize: 14,
                   color: Colors.black,
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: [
+                children: const [
                   Text(
                     '9.53 am',
                     style: TextStyle(
                       fontSize: 12,
-                      color: textColor(context),
                     ),
                   )
                 ],

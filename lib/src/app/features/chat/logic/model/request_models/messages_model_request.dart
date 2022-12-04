@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'messages_model_request.g.dart';
 
 @JsonSerializable(createFactory: false)
-class MessagesModelRequest {
+class MessagesModelRequest extends Equatable {
   @JsonKey(name: 'receiver_id')
   final int receiverId;
   final int page;
@@ -16,4 +17,11 @@ class MessagesModelRequest {
   });
 
   Map<String, dynamic> toJson() => _$MessagesModelRequestToJson(this);
+
+  @override
+  List<Object?> get props => [
+        receiverId,
+        page,
+        lang,
+      ];
 }

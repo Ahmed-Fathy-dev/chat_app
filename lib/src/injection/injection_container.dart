@@ -17,7 +17,6 @@ class InjectorFile {
     _chatService;
   }
 }
-
 // Service
 void get _service async {
   //TODO: Add Token Here [token]
