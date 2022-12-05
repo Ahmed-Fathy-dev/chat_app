@@ -6,6 +6,7 @@ import 'package:zido/src/core/utils/logger_util.dart';
 import '../../../../../core/network_service/api_urls.dart';
 import '../../../../../core/network_service/exception_dio_message.dart';
 import '../model/request_models/messages_model_request.dart';
+import '../model/request_models/register_socket_model.dart';
 import '../model/response_models/chats_model_response.dart';
 import '../model/response_models/messages_model_response.dart';
 

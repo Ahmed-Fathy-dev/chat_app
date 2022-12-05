@@ -1,12 +1,12 @@
 mixin ApiUrls {
   static const keyHeaderToken = 'notRequiresTokenKey';
   static const baseUrlApi = 'https://test.zido.com.sa/api/';
+  static const socketUri = 'ws://3.75.62.24:8090';
 
   static const userChats = 'chats';
   static const messages = 'messages';
-
+  static const login = 'login';
 }
 
 const String constToken =
     'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImM2ZGMzN2ZjZDM1ZGViODFhMGMwZjlmOGNhNGYxODI5N2VjMWJkMzQ1ZGVjNDE2ZTkzYWYzZjRlY2RmYzE4YzZjNDY0MWMyYjJiZDViNmM3In0.eyJhdWQiOiIzIiwianRpIjoiYzZkYzM3ZmNkMzVkZWI4MWEwYzBmOWY4Y2E0ZjE4Mjk3ZWMxYmQzNDVkZWM0MTZlOTNhZjNmNGVjZGZjMThjNmM0NjQxYzJiMmJkNWI2YzciLCJpYXQiOjE2NzAwNjY1ODcsIm5iZiI6MTY3MDA2NjU4NywiZXhwIjoxNzAxNjAyNTg2LCJzdWIiOiIxNzY4Iiwic2NvcGVzIjpbXX0.b-8eZ-tDkTgB7b2oNO40HkYrqCW7tS5BvDKxaIj9KFJzi1jqeW8MhscvFEpnPwxPo5yyNrJz_IrY0MJt-M8-0l8TGPfvRyOqzyR8YMZYvEuAMNKsdhJFmULVpaALgPD03fvPhpj57uilE-4b7E9eK6Jb6zITz8y_IbRrIaiQqkgvDr7FAt4YWhwlwBkJM6pMMFzFzwN-wQB4Qr_TeoLSJ-fQHVQNXSP9VYso_TSiFRJCsF2KcdR-MNbomqJKboiZCcjlb0vrZZLJp9bwmIbNnVE6jW3YimcG3vIFwxJR3rAFHh70afUVDOQmhq03U7uRtQQ_FUqTRjsc6E_-GzwLiIs8kA7Y6VzXAmZLylaWUvRHfg7KTDXMedZ6xer9GSZUZPiloXuvkuEX8_K3p_tueBYySq2oXGnxYJlh3-GNxx1zNgRLD5borpw4RumQu_o1eZqlttkWFKF269l14ulPcORnZfYGh965OB1rnso0xbmjC0B8zamluoLseNgWwOPtVL0UDG_8PZohRiiD7dJ-kzonGFMg5CLDkSMsENMEXSHSrx9bJEMv1jzEXEIAIrCqRUhkgkhlx89ji_7u30qGIjGNISjHOIqKiuRiWVdVNUgQbo3nNRp7sB39x7oewX6nZj65mCjIcKJTuCT59iU5RLtv0z6-YuIgZzH2NCtVc3U';
-

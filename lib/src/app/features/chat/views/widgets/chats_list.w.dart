@@ -13,7 +13,12 @@ class _ChatsListWidget extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final scrollController = useScrollController();
-
+    useMemoized(() => context.read<UserMessagesBloc>()
+      ..add(
+        RegisterSocketEvent(
+          RegisterSocket(data: Data(1768), event: 'register'),
+        ),
+      ));
     useEffect(() {
       scrollController.addListener(() {
         if (scrollController.position.pixels ==
@@ -24,7 +29,7 @@ class _ChatsListWidget extends HookWidget {
       return;
     }, [scrollController]);
     return BlocBuilder<UserChatsBloc, UserChatsState>(
-      builder: (context, state) {
+      builder: (_, state) {
         return ListView.separated(
           controller: scrollController,
           itemBuilder: (context, index) {

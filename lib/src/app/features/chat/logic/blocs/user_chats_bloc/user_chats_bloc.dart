@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:stream_transform/stream_transform.dart';
 import 'package:zido/src/app/features/chat/logic/repo/chat_repo.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:zido/src/core/network_service/socket_service.dart';
 import '../../../../../../core/network_service/exception_dio_message.dart';
 import '../../../../../../core/network_service/response_status.dart';
 import '../../../../../../core/utils/logger_util.dart';

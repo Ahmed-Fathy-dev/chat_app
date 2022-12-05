@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:zido/src/app/features/chat/logic/blocs/send_message_bloc/send_message_bloc.dart';
 import 'package:zido/src/core/Routers/routes.dart';
 import 'package:zido/src/core/utils/extensions_methods/app_ex_methods.dart';
 import 'package:zido/src/core/utils/extensions_methods/app_extensions_m.dart';
@@ -12,6 +13,7 @@ import '../../../../../core/enum/enums.dart';
 import '../../../../../core/network_service/response_status.dart';
 import '../../../../../core/network_service/wrap_service.dart';
 import '../../../../components/custom_appbar.dart';
+import '../../../../components/forms/custom_text_field.dart';
 import '../../../../components/image_net.dart';
 import '../../../../components/shimmer_loading.dart';
 import '../../logic/blocs/user_messages_bloc/user_messages_bloc.dart';
@@ -28,16 +30,34 @@ class ChatRoomPage extends StatelessWidget {
   });
   final int? receiverId;
 
+  Future<bool> onWillPop(BuildContext ctx) async {
+    ctx.pop();
+    ctx.read<UserMessagesBloc>().add(
+          ResetEvent(),
+        );
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        ctx: context,
-        title: AppStrings.messagesPageTitle,
-        leadingColor: Colors.white,
-        onLeadingPressed: () => context.pop(),
+    return WillPopScope(
+      onWillPop: () async {
+        return onWillPop(context);
+      },
+      child: Scaffold(
+        appBar: CustomAppBar(
+          ctx: context,
+          title: AppStrings.messagesPageTitle,
+          leadingColor: Colors.white,
+          onLeadingPressed: () {
+            context.read<UserMessagesBloc>().add(
+                  ResetEvent(),
+                );
+            context.pop();
+          },
+        ),
+        body: _ChatRoomBody(receiverId!),
       ),
-      body: _ChatRoomBody(receiverId!),
     );
   }
 }

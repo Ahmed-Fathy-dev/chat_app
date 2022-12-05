@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:zido/src/core/utils/extensions_methods/app_extensions_m.dart';
 
-import '../../../../../core/enum/enums.dart';
-import '../../../../components/shimmer_loading.dart';
+part '../widgets/login_widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -9,13 +11,18 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('login'),
-      ),
-      body: const ShimmerLoading(
-        enabled: true,
-        type: PageType.withDivider,
-      ),
+      body: const _LoginBody(),
+    );
+  }
+}
+
+class _LoginBody extends StatelessWidget {
+  const _LoginBody();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [],
     );
   }
 }

@@ -109,34 +109,34 @@ class MessagesModel extends Equatable {
 @JsonSerializable(createToJson: false)
 class UserMessages extends Equatable {
   const UserMessages({
-    required this.id,
-    required this.chatId,
-    required this.roomId,
+    this.id,
+    this.chatId,
+    this.roomId,
     required this.userId,
     required this.txt,
-    required this.state,
+    this.state,
     // this.createdAt,
     // this.updatedAt,
-    required this.name,
+    this.name,
     required this.image,
-    required this.recieverVerifiedStatus,
+    this.recieverVerifiedStatus,
   });
 
-  final int id;
+  final int? id;
   @JsonKey(name: 'chat_id')
-  final int chatId;
+  final int? chatId;
   @JsonKey(name: 'room_id')
   final dynamic roomId;
   @JsonKey(name: 'user_id')
   final int userId;
   final String txt;
-  final int state;
+  final int? state;
   // final DateTime createdAt;
   // final DateTime updatedAt;
-  final String name;
+  final String? name;
   final String image;
   @JsonKey(name: 'reciever_verified_status')
-  final int recieverVerifiedStatus;
+  final int? recieverVerifiedStatus;
 
   factory UserMessages.fromJson(Map<String, dynamic> json) =>
       _$UserMessagesFromJson(json);
@@ -152,5 +152,77 @@ class UserMessages extends Equatable {
         name,
         image,
         recieverVerifiedStatus,
+      ];
+}
+
+@JsonSerializable(createToJson: false)
+class MessageModelRes extends Equatable {
+  const MessageModelRes({
+    required this.event,
+    this.data,
+  });
+
+  final String event;
+  final MessageModel? data;
+
+  factory MessageModelRes.fromJson(Map<String, dynamic> json) =>
+      _$MessageModelResFromJson(json);
+
+  @override
+  List<Object?> get props => [
+        event,
+        data,
+      ];
+}
+
+@JsonSerializable()
+class MessageModel extends Equatable {
+  const MessageModel({
+    this.id,
+    required this.userId,
+    required this.to,
+    required this.content,
+    required this.image,
+  });
+
+  final int? id;
+  @JsonKey(name: 'user_id')
+  final int userId;
+  final int to;
+  final String content;
+  final String image;
+
+  factory MessageModel.fromJson(Map<String, dynamic> json) =>
+      _$MessageModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MessageModelToJson(this);
+
+  @override
+  List<Object?> get props => [
+        id,
+        userId,
+        to,
+        content,
+        image,
+      ];
+}
+
+@JsonSerializable(createToJson: false)
+class RegisteryModel extends Equatable {
+  const RegisteryModel({
+    required this.event,
+    this.message,
+  });
+
+  final String event;
+  final String? message;
+
+  factory RegisteryModel.fromJson(Map<String, dynamic> json) =>
+      _$RegisteryModelFromJson(json);
+
+  @override
+  List<Object?> get props => [
+        event,
+        message,
       ];
 }

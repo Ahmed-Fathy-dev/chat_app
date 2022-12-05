@@ -63,7 +63,7 @@ class _MessageDetailsWidget extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    msgs.name,
+                    msgs.name.checkString('Fake Name'),
                     style: TextStyle(
                       fontSize: 12,
                       color: msgs.userId.textColor(context),

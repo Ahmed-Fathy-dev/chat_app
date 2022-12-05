@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:zido/src/app/components/shimmer_loading.dart';
 import 'package:zido/src/app/components/switcher_widget.dart';
+import 'package:zido/src/app/features/chat/logic/blocs/send_message_bloc/send_message_bloc.dart';
 import 'package:zido/src/core/Routers/routes.dart';
 import 'package:zido/src/core/utils/extensions_methods/app_ex_methods.dart';
 import 'package:zido/src/core/utils/extensions_methods/app_extensions_m.dart';
@@ -18,6 +19,7 @@ import '../../../../components/custom_appbar.dart';
 import '../../../../components/image_net.dart';
 import '../../logic/blocs/user_chats_bloc/user_chats_bloc.dart';
 import '../../logic/blocs/user_messages_bloc/user_messages_bloc.dart';
+import '../../logic/model/request_models/register_socket_model.dart';
 import '../../logic/model/response_models/chats_model_response.dart';
 import 'chat_room.dart';
 
