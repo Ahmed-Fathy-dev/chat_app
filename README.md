@@ -1,4 +1,4 @@
-# zido
+# Chat app
 
 A new Flutter project.
 
